@@ -20,6 +20,11 @@ test('JSON', () => {
   assert.deepEqual(JSON.parse(output), input, 'matches original');
 });
 
-// import { App } from '../src/app';
-// test('App', () => {
-// });
+import { h } from 'preact';
+import { render, fireEvent, screen, waitFor } from '@testing-library/preact';
+import { App } from '../src/app';
+test('App', () => {
+  const { container } = render(<App/>);
+  const h1 = container.querySelector('h1');
+  expect(h1?.textContent).toMatch('Vite + Preact');
+});
